@@ -1,0 +1,7 @@
+# Copy this file to signing.properties and fill in your local signing values.
+# Do not commit signing.properties to version control.
+
+storeFile=C:/path/to/your/release-keystore.jks
+storePassword=replace-with-your-store-password
+keyAlias=your-key-alias
+keyPassword=replace-with-your-key-password

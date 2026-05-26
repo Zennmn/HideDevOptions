@@ -4,6 +4,7 @@
 .claude/
 
 local.properties
+signing.properties
 
 build/
 **/build/

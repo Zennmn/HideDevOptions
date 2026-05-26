@@ -44,10 +44,32 @@ Windows PowerShell:
 .\gradlew.bat assembleRelease
 ```
 
-生成的未签名 APK 默认位于：
+如果项目根目录存在本地 `signing.properties`，则 `release` 会自动使用正式签名。
+
+可以先复制一份示例文件：
+
+```powershell
+Copy-Item .\signing.properties.example .\signing.properties
+```
+
+`signing.properties` 示例字段：
+
+```properties
+storeFile=C:/path/to/your/release-keystore.jks
+storePassword=your-store-password
+keyAlias=your-key-alias
+keyPassword=your-key-password
+```
+
+注意：
+
+- `signing.properties` 仅用于本地签名，已加入 `.gitignore`
+- 没有该文件时，项目仍可继续构建，但不会使用正式签名
+
+生成的 APK 默认位于：
 
 ```text
-app/build/outputs/apk/release/app-release-unsigned.apk
+app/build/outputs/apk/release/
 ```
 
 ## 使用方法
