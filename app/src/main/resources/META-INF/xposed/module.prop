@@ -1,0 +1,6 @@
+name=HideDevOptions
+description=LSPosed module that reports Developer Options and ADB as disabled to scoped apps.
+version=1.0.0
+versionCode=1
+minApiVersion=101
+targetApiVersion=101
