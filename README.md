@@ -1,61 +1,69 @@
 # HideDevOptions
 
-`HideDevOptions` is a small LSPosed/Xposed module for Android that hooks system settings reads and makes target apps see Developer Options and ADB as disabled.
+`HideDevOptions` 是一个用于 Android 的轻量级 LSPosed/Xposed 模块。它会拦截目标应用对系统设置的读取，让应用读取到的“开发者选项”和“ADB 调试”状态始终为关闭。
 
-## What it does
+## 功能说明
 
-- Hooks `Settings.Global.getInt(...)`
-- Hooks `Settings.Secure.getInt(...)`
-- Hooks `Settings.Global.getString(...)`
-- Hooks `Settings.Secure.getString(...)`
-- Returns `0` or `"0"` for:
+- Hook `Settings.Global.getInt(...)`
+- Hook `Settings.Secure.getInt(...)`
+- Hook `Settings.Global.getString(...)`
+- Hook `Settings.Secure.getString(...)`
+- 当读取以下字段时，强制返回 `0` 或 `"0"`
   - `development_settings_enabled`
   - `adb_enabled`
 
-## Project structure
+这适合用于某些会因为检测到开发者选项或 USB 调试开启而限制功能的应用场景。
 
-- `app/src/main/java/com/example/hideadb/MainHook.java`: Xposed hook entry point
-- `app/src/main/resources/META-INF/xposed/`: Xposed module metadata
-- `app/src/main/res/values/arrays.xml`: default LSPosed scope config
+## 项目结构
 
-## Requirements
+- `app/src/main/java/com/example/hideadb/MainHook.java`
+  Xposed 模块入口和核心 Hook 逻辑
+- `app/src/main/resources/META-INF/xposed/`
+  Xposed 模块元数据
+- `app/src/main/res/values/arrays.xml`
+  LSPosed 默认作用域配置
+
+## 环境要求
 
 - Android SDK
 - JDK 11
-- Gradle wrapper included in this repo
-- LSPosed or another compatible modern Xposed framework
+- 仓库已包含 Gradle Wrapper
+- LSPosed 或其他兼容的现代 Xposed 框架
 
-## Build
+## 编译方法
+
+Linux / macOS:
 
 ```bash
 ./gradlew assembleRelease
 ```
 
-On Windows PowerShell:
+Windows PowerShell:
 
 ```powershell
 .\gradlew.bat assembleRelease
 ```
 
-The unsigned release APK will be generated under:
+生成的未签名 APK 默认位于：
 
 ```text
 app/build/outputs/apk/release/app-release-unsigned.apk
 ```
 
-## Usage
+## 使用方法
 
-1. Build the release APK.
-2. Install it in an environment with LSPosed.
-3. Enable the module in LSPosed Manager.
-4. Select the target apps in module scope.
-5. Reboot or restart the target apps.
+1. 编译生成 APK。
+2. 在安装了 LSPosed 的环境中安装模块。
+3. 在 LSPosed Manager 中启用模块。
+4. 为模块手动选择需要隐藏开发者选项检测的目标应用。
+5. 重启设备，或至少强制结束并重新打开目标应用。
 
-## Notes
+## 注意事项
 
-- The module uses an empty default scope, so target apps must be selected manually.
-- `local.properties` and build outputs are intentionally excluded from version control.
+- 本模块默认作用域为空，需要你在 LSPosed 中手动勾选目标应用。
+- `local.properties`、构建产物等文件已通过 `.gitignore` 排除，不会提交到仓库。
+- 不同 Android 版本和 ROM 上的兼容性可能会有差异，建议自行测试。
 
-## License
+## 开源协议
 
-No license file has been added yet. Add one before wider public distribution if needed.
+本项目使用 [MIT License](./LICENSE) 开源，你可以自由使用、修改和分发，但需保留原始许可证声明。
