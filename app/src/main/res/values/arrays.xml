@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Default scope: empty, user selects target apps in LSPosed manager -->
-    <string-array name="xposed_scope" />
+    <string-array name="xposed_scope" tools:ignore="UnusedResources" />
 </resources>
