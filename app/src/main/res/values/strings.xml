@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">HideDevOptions</string>
+    <string name="app_description" translatable="false">Reports Developer Options and ADB debugging as disabled to scoped apps.</string>
+</resources>

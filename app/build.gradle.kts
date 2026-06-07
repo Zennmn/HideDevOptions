@@ -14,12 +14,12 @@ if (hasSigningProperties) {
 
 android {
     namespace = "com.example.hideadb"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.hideadb"
         minSdk = 27
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }

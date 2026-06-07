@@ -6,8 +6,13 @@
 
 - Hook `Settings.Global.getInt(...)`
 - Hook `Settings.Secure.getInt(...)`
+- Hook `Settings.System.getInt(...)`
 - Hook `Settings.Global.getString(...)`
 - Hook `Settings.Secure.getString(...)`
+- Hook `Settings.System.getString(...)`
+- Hook 常见的 `getStringForUser(...)` / `getIntForUser(...)` 内部读取路径
+- Hook 直接访问 Settings Provider 的 `ContentResolver.call(...)` / `query(...)` 常见读取路径
+- Hook 常见 ADB/调试相关 `SystemProperties` 读取
 - 当读取以下字段时，强制返回 `0` 或 `"0"`
   - `development_settings_enabled`
   - `adb_enabled`
@@ -26,7 +31,7 @@
 ## 环境要求
 
 - Android SDK
-- JDK 11
+- JDK 17+
 - 仓库已包含 Gradle Wrapper
 - LSPosed 或其他兼容的现代 Xposed 框架
 
